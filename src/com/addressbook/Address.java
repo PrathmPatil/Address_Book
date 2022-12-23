@@ -1,6 +1,6 @@
 package com.addressbook;
 
-public class Address {
+public class Address extends Econtact {
 public static void address(String add, String city,String state, String zip)
 {
 	System.out.println("Address ::- "+add);
