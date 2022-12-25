@@ -1,12 +1,18 @@
 package com.addressbook;
 
+import java.util.Scanner;
+
 public class Main {
 
 	public static void main(String[] args) {
-   AddressBook addressbook=new AddressBook();
-   addressbook.name(null, null);
-   addressbook.address(null, null, null, null);
-   addressbook.econtact(null, null);
+		int n;
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter the number of elements you want to store: "); 
+		n=sc.nextInt();
+   AddressBook  addressbook=new AddressBook();
+  	addressbook.store(n);;
+  	addressbook.print(n);
+   
 	}
 
 }
