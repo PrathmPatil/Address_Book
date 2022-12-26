@@ -40,6 +40,7 @@ public class AddressBook {
              System.out.println("Select an option!");
 	            System.out.println("1. Add an entry");
 	            System.out.println("2. Edit an entry");
+	            System.out.println("3.Remove an entry");
 	           option = s.nextInt();
 	            
 	                switch(option) {
@@ -85,6 +86,11 @@ public class AddressBook {
 	    	         System.out.println();
 	                 library[selectedBook].edit(first, last, address, city, state, zip, phNumber, email, whichEntry-1);
 	                 break;
+	            case 3: 
+	                System.out.print("Remove which entry? ");
+	                int entry = s.nextInt();
+	                library[selectedBook].remove(entry-1);
+	                break;
 	            }
 	            
         }

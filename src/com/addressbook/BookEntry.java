@@ -65,7 +65,6 @@ public class BookEntry {
 	        contact[entries] = new Entry(first, last, address, city, state, zip, phNumber, email);
 	        entries++;
 	        }
-	        else System.out.println("Error: book is full");
 	    }
 	  //Changes the values of an entry
 	    public void edit(String first, String last, String address, String city, String state, String zip,
@@ -78,5 +77,20 @@ public class BookEntry {
 	        contact[option].zip = zip;
 	        contact[option].phNumber = phNumber;
 	        contact[option].email = email;
+	    }
+	    public void remove(int entry){
+	        if (entries>0){
+	            contact[entry] = new Entry();
+	            for (int i = 0;i<entries-entry;i++){
+	                if (entry+1==entries) contact[entry] = new Entry();
+	                else{
+	                    Entry temp = contact[entry+i];
+	                    contact[entry+i] = contact[entry+i+1]; //Removes an entry end moves each entry after it one backwards.
+	                    contact[entry+i+1] = temp;
+	                }
+	            }
+	            entries--;
+	            }
+	            else System.out.println("Error: book is empty.");
 	    }
 }
