@@ -1,65 +1,93 @@
 package com.addressbook;
 import java.util.Scanner;
+public class AddressBook {
 
-public class AddressBook extends Name {
-	static String []fName = new String [100] ;
-	static String []lName = new String [100] ;
-	static String []add = new String [100] ;
-	static String []city = new String [100];
-	static String []state = new String [100];
-	static String []zip = new String [100];
-	static String []phNumber = new String [100];
-	static String []email = new String [100];
-	public static void store(int n) {
-		
-		System.out.println("Welcome to Address Book");
-		System.out.println();
-		Scanner sc= new Scanner(System.in);
-		for(int i=1;i<=n;i++)
-		{  System.out.println("Enter "+i+" number Contact");
-			System.out.println("Enter First and Last Name ");
-			 fName [i]= sc.next();
-			 lName [i]=sc.next();
-			 System.out.println("Enter Address ");
-			 add [i]=sc.next();
-			 System.out.println("Enter City ");
-			 city [i]=sc.next();
-			 System.out.println("Enter State ");
-			 state [i]=sc.next();
-			 System.out.println("Enter Zip ");
-			 zip [i]=sc.next();
-			 
-			 System.out.println("Enter Phone Number ");
-		     phNumber [i]=sc.next();
-			 System.out.println("Enter Email ");
-			 email [i]=sc.next();
-			 System.out.println();
-
-		}
-		 
-		
+	public static void main(String[] args) {
+		 Scanner s = new Scanner(System.in);
+		 int nEntries ;
+		 int nBook=1;
+		 BookEntry[] library = new BookEntry[0];
+		 while(true)
+		 { 
+			 if(nBook>0)
+			 {
+				 library=new BookEntry[nBook];
+				 break;
+			 }
+		 }
+		 for(int i=0;i<library.length;i++) {
+			 library[i] = new BookEntry();
+			 while(true) {
+				 System.out.print("How many entries in book ");
+		         nEntries = s.nextInt();
+		         if(nEntries>0)
+		         {
+		        	 library[i].initEntries(nEntries); 
+		        	 break;
+		         }
+				 
+			 }
+		 }
+			 boolean done=false;
+			 int selectedBook = 0;
+		     int option;
+		     while(done==false) {
+		    	 for(int i=0;i<library[selectedBook].getEntries();i++) {
+		    		 System.out.println("***********Entry "+(i+1)+" ***********");
+		    		 library[selectedBook].contact[i].readEntry();
+		    		 System.out.println("*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*");
+		    	 }
+             System.out.println("Select an option!");
+	            System.out.println("1. Add an entry");
+	            System.out.println("2. Edit an entry");
+	           option = s.nextInt();
+	            
+	                switch(option) {
+	            case 1:String first, last, address, city, state, zip, phNumber, email;
+	            System.out.print("First name? ");
+                first = s.next();
+                System.out.print("Last name? ");
+                last = s.next();
+                System.out.print("Address? ");
+                address = s.next();
+   			    System.out.print("Enter City ");
+   			    city=s.next();
+   			    System.out.print("Enter State ");
+   			    state=s.next();
+   			    System.out.print("Enter Zip ");
+   			    zip=s.next();
+   		        System.out.print("Enter Phone Number ");
+   		        phNumber=s.next();
+   			    System.out.print("Enter Email ");
+   			    email=s.next();
+   			    System.out.println();
+                library[selectedBook].add(first, last, address, city, state, zip, phNumber, email);
+                break;
+	            case 2: 
+	            	 System.out.print("Edit which entry?");
+	                 int whichEntry = s.nextInt();
+	                 System.out.print("First name? ");
+	                 first = s.next();
+	                 System.out.print("Last name? ");
+	                 last = s.next();
+	                 System.out.print("Address? ");
+	                 address = s.next();
+	    			 System.out.print("Enter City ");
+	    		     city=s.next();
+	    		     System.out.print("Enter State ");
+	    		     state=s.next();
+	    	         System.out.print("Enter Zip ");
+	    	         zip=s.next();
+	    	         System.out.print("Enter Phone Number ");
+	    	         phNumber=s.next();
+	    	         System.out.print("Enter Email ");
+	    	         email=s.next();
+	    	         System.out.println();
+	                 library[selectedBook].edit(first, last, address, city, state, zip, phNumber, email, whichEntry-1);
+	                 break;
+	            }
+	            
+        }
 	}
-	public static void print(int n) {
 
-		for(int i=1;i<=n;i++){
-			System.out.println(i+" number Contact Information");
-			/*
-			  * obj of Name Class
-			  */
-			 Name obj1=new Name();
-			  obj1.name(fName[i],lName[i]);;
-			 /*
-			  * obj of Address class
-			  */
-			 Address obj2=new Address();
-			 obj2.address(add[i], city[i], state[i], zip[i]);
-			 /*
-			  * obj of EContact class
-			  */
-			 Econtact obj3=new Econtact();
-			 obj3.econtact(phNumber[i], email[i]);
-			 System.out.println();
-		}
-		 
-	}
 }
